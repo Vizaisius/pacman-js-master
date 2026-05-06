@@ -21,7 +21,7 @@ let ghostImageLocations = [
     { x: 176, y: 121 },
 ];
 
-// Game variables
+// variaveis do jogo
 let fps = 30;
 let pacman;
 let oneBlockSize = 20;
@@ -31,9 +31,9 @@ let wallSpaceWidth = oneBlockSize / 1.6;
 let wallOffset = (oneBlockSize - wallSpaceWidth) / 2;
 let wallInnerColor = "black";
 
-// we now create the map of the walls,
-// if 1 wall, if 0 not wall
-// 21 columns // 23 rows
+// criando o mapa do jogo,
+// 1 = parede, 0 = não é parade, 2 = comida
+// 21 colunas e 21 linhas, cada bloco tem 20px, o mapa tem 420px por 420px      
 let map = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
@@ -69,12 +69,6 @@ let randomTargetsForGhosts = [
         y: (map.length - 2) * oneBlockSize,
     },
 ];
-
-// for (let i = 0; i < map.length; i++) {
-//     for (let j = 0; j < map[0].length; j++) {
-//         map[i][j] = 2;
-//     }
-// }
 
 let createNewPacman = () => {
     pacman = new Pacman(

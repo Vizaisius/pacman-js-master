@@ -9,10 +9,12 @@ class Pacman {
         this.nextDirection = 4;
         this.frameCount = 7;
         this.currentFrame = 1;
-        setInterval(() => {
-            this.changeAnimation();
-        }, 100);
+
+        // Atualiza animação no gameLoop (evita múltiplos setIntervals em restart)
+        this._animationTimerMs = 0;
+        this._animationDelayMs = 100;
     }
+
 
     moveProcess() {
         this.changeDirectionIfPossible();
@@ -40,16 +42,16 @@ class Pacman {
 
     moveBackwards() {
         switch (this.direction) {
-            case DIRECTION_RIGHT: // Right
+            case DIRECTION_RIGHT: // direita
                 this.x -= this.speed;
                 break;
-            case DIRECTION_UP: // Up
+            case DIRECTION_UP: // cima
                 this.y += this.speed;
                 break;
-            case DIRECTION_LEFT: // Left
+            case DIRECTION_LEFT: // esquerda
                 this.x += this.speed;
                 break;
-            case DIRECTION_BOTTOM: // Bottom
+            case DIRECTION_BOTTOM: // botao
                 this.y -= this.speed;
                 break;
         }
@@ -57,16 +59,16 @@ class Pacman {
 
     moveForwards() {
         switch (this.direction) {
-            case DIRECTION_RIGHT: // Right
+            case DIRECTION_RIGHT: // direita
                 this.x += this.speed;
                 break;
-            case DIRECTION_UP: // Up
+            case DIRECTION_UP: // cima
                 this.y -= this.speed;
                 break;
-            case DIRECTION_LEFT: // Left
+            case DIRECTION_LEFT: // esquerda
                 this.x -= this.speed;
                 break;
-            case DIRECTION_BOTTOM: // Bottom
+            case DIRECTION_BOTTOM: // botao
                 this.y += this.speed;
                 break;
         }
